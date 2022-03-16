@@ -1,11 +1,5 @@
-lfs track "*.psd"
-lfs track "*.html"
-lfs track "*.css"
-lfs track "*.js"
-lfs track "*.cs"
-lfs track "*.py"
-lfs track "*.jpg"
-lfs track "*.png"
-lfs track "*.jpeg"
-lfs track "*.mp3"
-lfs track "*.mp4"
+*.mp4 filter=lfs diff=lfs merge=lfs -text
+
+*.mp3 filter=lfs diff=lfs merge=lfs -text
+
+*.m4a filter=lfs diff=lfs merge=lfs -text
