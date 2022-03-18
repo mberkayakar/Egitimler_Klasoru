@@ -30,3 +30,13 @@ console.warn("Bu bir uyarı yazisisdir. ")
 
 // konsola bir hata  yazısı yazdırtmak için (ünlem işareti ile bir hata gibi kırmızı şekilde çıkar)
 console.error("Bu bir uyarı yazisisdir. ")
+
+
+console.clear();
+
+var dizilerim = [1,2,"Berkay","AKAR",5,6,7,8,9]
+
+for(i = 0; i < dizi.length; i++) {
+     console.log(i + ". Eleman " + dizi[i] + " , Tipi : "+typeof dizilerim[i]);
+}
+

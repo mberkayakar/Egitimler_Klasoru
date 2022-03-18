@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Projeye js İmport Etmek
+    </title>
+    
+<!-- <script>
+    alert("JAVASCRİPT KODLARI BURAYA DA YÜKLENEBİLMEKTEDİR. İLk Çalıştırılacagı yer burada bu şekilde tanımlanırsa burası olur . ");
+    //genellikle sayfa yüklenme anında uzaktaki bir sunucudan bunu çekebilmek üzere koyarlar. 
+ </script> -->
+
+</head>
+<body>
+<h1> JAVASCRİPT E HOŞGELİDN </h1>
+<h3> Berkay AKAR </h3>
+
+
+
+    
+
+
+<!-- birinci import şekli -->
+
+<script defer>
+// en doğru deklorasyon şeklidir.
+console.log("Javascript E Hoşgeldiniz") 
+var a = 22;
+alert(a + "Sayısı var a denen bir değişkende tutulmuştur.")
+alert("Tavsiye edilen ise buraya bu şekilde tanımlamalar yapmak olmaktadır.")
+
+</script>
+    
+
+<!-- İkinci İmport Şekli (bir web kaynagından yada external dosyadan okuma)-->
+
+
+<script src="../JavaScript/firstapp.js" defer>
+// web kaynagından alım işlemlerinde en yukarıda alınması daha dpğrudur. bu tanımlama hatalı değil ama daha doğrudur. html renderlandıktan sonra js indirilmeye başlanır ve renderlanır.
+</script>
+
+
+
+
+</body>
+</html>
