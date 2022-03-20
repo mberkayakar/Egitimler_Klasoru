@@ -1,0 +1,17 @@
+﻿
+
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_layoutdefault";
+}
+
+@{
+    var cinsiyet_hitap = @ViewBag.Cinsiyet == "Erkek" ? "Bey" : "Hanım";
+}
+<br />
+
+<h1 style="text-align:center"> AKAR YAZILIM Copyright 2022 </h1>
+<br />
+<h3 style="text-align:center"> @ViewBag.Date</h3>
+<p style="text-align:center"> Merhabalar @ViewBag.Kullanici <bold>@cinsiyet_hitap</bold> @ViewBag.Selamlama </p>

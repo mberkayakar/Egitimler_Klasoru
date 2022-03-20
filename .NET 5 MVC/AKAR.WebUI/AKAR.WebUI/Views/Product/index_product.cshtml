@@ -1,0 +1,46 @@
+﻿@model List<AKAR.WebUI.Models.Employee>;
+
+@{
+    Layout = "_layoutdefault";
+}
+
+<br><br />
+<h3>
+    ÜRÜNLER LİSTESİ :
+</h3>
+
+@{
+    var count = @Model.Count;
+}
+
+<br />
+<br />
+
+<h1 style="text-align : center">... KARŞILAMA EKRANINA HOŞGELDİNİZ ...</h1>
+
+<br /><br />
+
+
+<table class="table table-dark">
+  <thead>
+    <tr>     
+      <th scope="col">ID</th>
+      <th scope="col">ISIM</th>
+      <th scope="col">SOYISIM</th>
+    </tr>
+  </thead>
+  <tbody>
+        @foreach (var item in Model)
+        {
+            
+        <tr>
+      <td>@item.ID</td>
+      <td>@item.ISIM</td>
+      <td>@item.SOYISIM</td>
+    </tr>
+        }
+  </tbody>
+</table>
+<br />
+<p style ="text-align:center"> toplam @count adet kayıt listelenmiştir. </p>
+
