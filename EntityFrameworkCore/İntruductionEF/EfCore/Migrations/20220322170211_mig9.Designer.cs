@@ -3,14 +3,16 @@ using EfCore.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EfCore.Migrations
 {
     [DbContext(typeof(SQLİTECONTEXT))]
-    partial class SQLİTECONTEXTModelSnapshot : ModelSnapshot
+    [Migration("20220322170211_mig9")]
+    partial class mig9
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -93,19 +95,6 @@ namespace EfCore.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("EfCore.Entities.deneme", b =>
-                {
-                    b.Property<string>("İSİM")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("SOYİSİM")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("İSİM");
-
-                    b.ToTable("deneme");
                 });
 
             modelBuilder.Entity("EfCore.Entities.Adress", b =>

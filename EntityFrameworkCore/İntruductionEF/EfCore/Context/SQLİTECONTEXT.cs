@@ -38,5 +38,12 @@ namespace EfCore.Context
 
         public DbSet<Product> Products { get; set; }
 
+        public DbSet<Adress> Adresses { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<deneme> deneme { get; set; }
+
+
+
+
     }
 }
