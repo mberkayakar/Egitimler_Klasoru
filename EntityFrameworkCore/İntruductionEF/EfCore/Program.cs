@@ -418,153 +418,186 @@ namespace EfCore
 
             #endregion
 
-
             #region İlişkili Tablolardan İş süreçleri 1-n ilişki 
 
-            void GetAllUser()
-            {
-                using (var context = new SQLİTECONTEXT())
-                {
-                    var userlist = context.Users.ToList();
-                    foreach (var item in userlist)
-                    {
-                        Console.WriteLine(item.ID + "    " + item.Username + "    " + item.Email + "   ");
-                    }
-                    Console.WriteLine("\n \n " + "Toplam " + userlist.Count + " Adet Kullanıcı Listelenmiştir");
-                    context.SaveChanges();
-                }
-            }
+        //    void GetAllUser()
+        //    {
+        //        using (var context = new SQLİTECONTEXT())
+        //        {
+        //            var userlist = context.Users.ToList();
+        //            foreach (var item in userlist)
+        //            {
+        //                Console.WriteLine(item.ID + "    " + item.Username + "    " + item.Email + "   ");
+        //            }
+        //            Console.WriteLine("\n \n " + "Toplam " + userlist.Count + " Adet Kullanıcı Listelenmiştir");
+        //            context.SaveChanges();
+        //        }
+        //    }
 
-            void AddUser(User user)
-            {
-                using (var context = new SQLİTECONTEXT())
-                {
-                    context.Users.Add(user);
-                    context.SaveChanges();
-                    Console.WriteLine("Kayıt Başarılı ");
-                    Thread.Sleep(1000);
-                    Console.Clear();
-                }
+        //    void AddUser(User user)
+        //    {
+        //        using (var context = new SQLİTECONTEXT())
+        //        {
+        //            context.Users.Add(user);
+        //            context.SaveChanges();
+        //            Console.WriteLine("Kayıt Başarılı ");
+        //            Thread.Sleep(1000);
+        //            Console.Clear();
+        //        }
 
-                GetAllUser();
-            }
+        //        GetAllUser();
+        //    }
 
-            void getuserbyusername(string username)
-            {
-                using (var context = new SQLİTECONTEXT())
-                {
-                    var insanlar = context.Users.Where(x => x.Username.Contains(username)).ToList();
-                    foreach (var item in insanlar)
-                    {
-                        Console.WriteLine(item.ID + " - " + item.Username + "   " + item.Email);
-                    }
-                    Console.WriteLine("\n\n");
+        //    void getuserbyusername(string username)
+        //    {
+        //        using (var context = new SQLİTECONTEXT())
+        //        {
+        //            var insanlar = context.Users.Where(x => x.Username.Contains(username)).ToList();
+        //            foreach (var item in insanlar)
+        //            {
+        //                Console.WriteLine(item.ID + " - " + item.Username + "   " + item.Email);
+        //            }
+        //            Console.WriteLine("\n\n");
 
-                }
-            }
+        //        }
+        //    }
 
-            void user_detail_by_id(int id)
-            {
-                using (var context = new SQLİTECONTEXT())
-                {
-
-
+        //    void user_detail_by_id(int id)
+        //    {
+        //        using (var context = new SQLİTECONTEXT())
+        //        {
 
 
-                    var tablo = context.Users.Include(x => x.Adresses).FirstOrDefault(p => p.ID == id);
-                    var adresses = context.Adresses.Include(a => a.User).FirstOrDefault(a => a.UserId == id);
-
-                    List<Adress> adresler = new();
-                    //adresler.Add(new()
-                    //{
-                    //    Fullname = "Abc",
-                    //    Title = "Abc",
-                    //    Body = "Abc",
-                    //    User = tablo
-                    //});
-
-                    List<User> users = new();
-                    users.Add(new()
-                    {
-                        Adresses = new List<Adress>()
-                        {
-                            new Adress{ UserId = 3, Title = "A",Fullname = "B", Body = "C"}
-                        }
-                    });
-
-                    // context.Adresses.AddRange(adresler);
-                    context.Users.AddRange(users);
-                    context.SaveChanges();
-                    /*                   
-                     EMPLOYEE - ORDERS - order details (PRODUCT)
-                    */
-
-                    if (tablo != null)
-                    {
-                        Console.WriteLine(" Kullanıcı Bilgileri : ");
-                        Console.WriteLine("  ");
-                        Console.WriteLine(tablo.ID + "  " + tablo.Username + "   " + tablo.Email);
-                        Console.WriteLine();
-                        Console.WriteLine("Adresler : ");
-                        Console.WriteLine();
-
-                        foreach (var item in tablo.Adresses)
-                        {
-                            Console.WriteLine(String.Format(item.ID + "    " + item.Body + "    " + item.Fullname));
-                        }
 
 
-                        Console.ReadLine();
+        //            var tablo = context.Users.Include(x => x.Adresses).FirstOrDefault(p => p.ID == id);
+        //            var adresses = context.Adresses.Include(a => a.User).FirstOrDefault(a => a.UserId == id);
+
+        //            List<Adress> adresler = new();
+        //            //adresler.Add(new()
+        //            //{
+        //            //    Fullname = "Abc",
+        //            //    Title = "Abc",
+        //            //    Body = "Abc",
+        //            //    User = tablo
+        //            //});
+
+        //            List<User> users = new();
+        //            users.Add(new()
+        //            {
+        //                Adresses = new List<Adress>()
+        //                {
+        //                    new Adress{ UserId = 3, Title = "A",Fullname = "B", Body = "C"}
+        //                }
+        //            });
+
+        //            // context.Adresses.AddRange(adresler);
+        //            context.Users.AddRange(users);
+        //            context.SaveChanges();
+        //            /*                   
+        //             EMPLOYEE - ORDERS - order details (PRODUCT)
+        //            */
+
+        //            if (tablo != null)
+        //            {
+        //                Console.WriteLine(" Kullanıcı Bilgileri : ");
+        //                Console.WriteLine("  ");
+        //                Console.WriteLine(tablo.ID + "  " + tablo.Username + "   " + tablo.Email);
+        //                Console.WriteLine();
+        //                Console.WriteLine("Adresler : ");
+        //                Console.WriteLine();
+
+        //                foreach (var item in tablo.Adresses)
+        //                {
+        //                    Console.WriteLine(String.Format(item.ID + "    " + item.Body + "    " + item.Fullname));
+        //                }
 
 
-                    }
+        //                Console.ReadLine();
 
 
-                }
-            }
+        //            }
 
 
-            GetAllUser();
+        //        }
+        //    }
 
-        basa:
-            Console.WriteLine("\n\n\n\n");
-            Console.WriteLine("\n\n Bir İşlem seçiniz \n\n 1.) Kullanıcı Ekleme 2.) Kullanıcı Görüntüleme 3.) Boş Adres Ekleme 4.) Bir kullanıcıya adres ekleme");
 
-            var A = Console.ReadLine();
-            if (A == "1")
-            {
+        //    GetAllUser();
+
+        //basa:
+        //    Console.WriteLine("\n\n\n\n");
+        //    Console.WriteLine("\n\n Bir İşlem seçiniz \n\n 1.) Kullanıcı Ekleme 2.) Kullanıcı Görüntüleme 3.) Boş Adres Ekleme 4.) Bir kullanıcıya adres ekleme");
+
+        //    var A = Console.ReadLine();
+        //    if (A == "1")
+        //    {
+        //        User user = new User();
+        //        Console.WriteLine("Lütfen Kullanıcı Adı Giriniz");
+        //        user.Username = Console.ReadLine().Trim().ToLower();
+        //        Console.WriteLine("Lütfen Kullanıcı için E Posta Girişi yapınız");
+        //        user.Email = Console.ReadLine().Trim().ToLower();
+
+
+
+        //        if (user.Username != "" && user.Email != "")
+        //        {
+        //            AddUser(user);
+        //            Console.WriteLine("Başka Bir işlem Yapmak İstermisiniz ? ");
+        //            if (Console.ReadLine() == "EVET")
+        //            {
+        //                goto basa;
+        //            }
+        //            else
+        //            {
+        //                return;
+        //            }
+        //        }
+
+        //    }
+        //    else if (A == "2")
+        //    {
+        //        GetAllUser();
+        //        Console.WriteLine("\n\n\n");
+        //        Console.WriteLine("Lütfen Bir id giriniz ");
+        //        user_detail_by_id(Convert.ToInt32(Console.ReadLine()));
+
+
+        //    }
+
+
+
+
+            #endregion
+
+            #region 1-1 İlişki
+
+            var context = new SQLİTECONTEXT();
+            
                 User user = new User();
-                Console.WriteLine("Lütfen Kullanıcı Adı Giriniz");
-                user.Username = Console.ReadLine().Trim().ToLower();
-                Console.WriteLine("Lütfen Kullanıcı için E Posta Girişi yapınız");
-                user.Email = Console.ReadLine().Trim().ToLower();
+                user.Username= "1-1 2";
+                user.Email = "AKARMUHAMMEDBERKAY@GMAİL.COM";
+
+                context.Users.Add(user);
+                context.SaveChanges();
+
+                Console.WriteLine("Böyle bir kayıt oluşturuldu ");
 
 
+            
+                 Customers c = new Customers();
+                 c.Identitynumber = "salim";
+                 c.soyisim = user.Username;
+                 c.isim = "salim";
+                 c.user = user;
+ 
 
-                if (user.Username != "" && user.Email != "")
-                {
-                    AddUser(user);
-                    Console.WriteLine("Başka Bir işlem Yapmak İstermisiniz ? ");
-                    if (Console.ReadLine() == "EVET")
-                    {
-                        goto basa;
-                    }
-                    else
-                    {
-                        return;
-                    }
-                }
-
-            }
-            else if (A == "2")
-            {
-                GetAllUser();
-                Console.WriteLine("\n\n\n");
-                Console.WriteLine("Lütfen Bir id giriniz ");
-                user_detail_by_id(Convert.ToInt32(Console.ReadLine()));
+                  context.customers.Add(c);
 
 
-            }
+           
+                 context.SaveChanges();
+
 
 
 

@@ -3,14 +3,16 @@ using EfCore.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EfCore.Migrations
 {
     [DbContext(typeof(SQLİTECONTEXT))]
-    partial class SQLİTECONTEXTModelSnapshot : ModelSnapshot
+    [Migration("20220325134851_mig365")]
+    partial class mig365
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -83,7 +85,7 @@ namespace EfCore.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("customers");
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("EfCore.Entities.Product", b =>
@@ -125,7 +127,7 @@ namespace EfCore.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("Suppliers");
+                    b.ToTable("Supplier");
                 });
 
             modelBuilder.Entity("EfCore.Entities.User", b =>
